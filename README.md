@@ -1,73 +1,23 @@
-# React + TypeScript + Vite
+# Portfolio of Photographer — Vera Andreeva 📸
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Современное минималистичное портфолио для профессионального фотографа.
+Сайт спроектирован так, чтобы максимально эффектно демонстрировать фотоработы,
+сохраняя при этом высокую скорость загрузки и удобство навигации.
 
-Currently, two official plugins are available:
+## Технологический стек
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Framework:** [React 18](https://reactjs.org/) (с использованием TypeScript)
+- **Build Tool:** [Vite](https://vitejs.dev/) — для мгновенной сборки.
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) — для кастомного дизайна.
+- **Animations:** [Framer Motion](https://www.framer.com/motion/) — для плавных переходов.
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Linting:** ESLint + Prettier — для чистоты кода.
+- 
 
-## React Compiler
+**Особенности проекта**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- [ ] **Галерея в стиле Masonry:** Динамическая сетка для фото разного формата.
+- [ ] **Lightbox:** Просмотр фотографий во весь экран.
+- [ ] **Адаптивность:** Сайт идеально выглядит на смартфонах и десктопах.
+- [ ] **Разделение по категориям:** Свадьбы, Love Story, Репортажи.
+- [ ] **Форма обратной связи:** Интеграция для записи на съемку.
