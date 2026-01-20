@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { portfolioData, type Category } from '../data/photos';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const Portfolio = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
@@ -147,23 +148,36 @@ export const Portfolio = () => {
       </div>
 
       {/* реализация LIGHTBOX */}
-      {selectedPhoto && (
-        <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-white/80 backdrop-blur-xl bg-stone-900/95 backdrop-blur-md p-4"
-          onClick={() => setSelectedPhoto(null)}
-        >
-          <div className="relative max-h-full max-w-full flex flex-col items-center">
-            <img 
-              src={selectedPhoto} 
-              alt="Full size" 
-              className="max-h-[85vh] w-auto object-contain shadow-[0_20px_50px_rgba(0,0,0,0.1)] shadow-2xl rounded-sm transition-transform duration-500" 
-            />
-            <button className="mt-4 text-stone-400 text-white/50 hover:text-white uppercase text-[10px] tracking-[0.2em]">
-            [×]
-            </button>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+  {selectedPhoto && (
+    <motion.div 
+      // Плавное появление фона
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-white/90 backdrop-blur-xl p-4"
+      onClick={() => setSelectedPhoto(null)}
+    >
+      <motion.div 
+        // Эффект небольшого фото
+        initial={{ scale: 0.8, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.8, opacity: 0, y: 20 }}
+        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+        className="relative max-h-full max-w-full flex flex-col items-center"
+      >
+        <img 
+          src={selectedPhoto} 
+          alt="Full size" 
+          className="max-h-[80vh] w-auto object-contain shadow-2xl rounded-sm" 
+        />
+        <button className="mt-8 text-stone-500 uppercase text-[10px] tracking-widest border-b border-stone-200">
+        [×]
+        </button>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </main>
   );
 };
