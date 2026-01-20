@@ -48,6 +48,12 @@ export const portfolioData: Photo[] = [
     alt: 'wedding & love-story'
   },
   {
+    id: 111111,
+    src: '/assets/portfolio/wedding/wed3.jpg',
+    category: 'wedding & love-story',
+    alt: 'wedding & love-story'
+  },
+  {
     id: 2,
     src: '/assets/portfolio/individ/girls.jpg',
     category: 'individual',
@@ -71,9 +77,15 @@ export const portfolioData: Photo[] = [
     category: 'individual',
     alt: 'individual'
   },
-    {
+  {
     id: 22222,
     src: '/assets/portfolio/individ/portrait-smiley-woman-posing-outdoors.jpg',
+    category: 'individual',
+    alt: 'individual'
+  },
+  {
+    id: 222222,
+    src: '/assets/portfolio/individ/1.jpg',
     category: 'individual',
     alt: 'individual'
   },
@@ -108,6 +120,12 @@ export const portfolioData: Photo[] = [
     alt: 'event'
   },
   {
+    id: 333333,
+    src: '/assets/portfolio/event/1.jpg',
+    category: 'event',
+    alt: 'event'
+  },
+  {
     id: 4,
     src: '/assets/portfolio/family/1.jpg',
     category: 'family',
@@ -134,6 +152,12 @@ export const portfolioData: Photo[] = [
   {
     id: 44444,
     src: '/assets/portfolio/family/5.jpg',
+    category: 'family',
+    alt: 'family'
+  },
+  {
+    id: 444444,
+    src: '/assets/portfolio/family/6.jpg',
     category: 'family',
     alt: 'family'
   },
@@ -168,6 +192,12 @@ export const portfolioData: Photo[] = [
     alt: "children's birthday party",
   },
   {
+    id: 555555,
+    src: '/assets/portfolio/children-birthday/6.jpg',
+    category: "children's birthday party",
+    alt: "children's birthday party",
+  },
+  {
     id: 6,
     src: '/assets/portfolio/street/1.jpg',
     category: "street-style",
@@ -185,7 +215,7 @@ export const portfolioData: Photo[] = [
     category: "street-style",
     alt: "street-style",
   },
-   {
+  {
     id: 6666,
     src: '/assets/portfolio/street/4.jpg',
     category: "street-style",
@@ -200,6 +230,12 @@ export const portfolioData: Photo[] = [
     {
     id: 666666,
     src: '/assets/portfolio/street/6.jpg',
+    category: "street-style",
+    alt: "street-style",
+  },
+  {
+    id: 6666666,
+    src: '/assets/portfolio/street/7.jpg',
     category: "street-style",
     alt: "street-style",
   },

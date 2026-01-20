@@ -4,7 +4,7 @@
 Сайт спроектирован так, чтобы максимально эффектно демонстрировать фотоработы,
 сохраняя при этом высокую скорость загрузки и удобство навигации.
 
-Portfolio of Photographer — Vera Andreeva
+Portfolio of Photographer
 
 A modern, minimalist portfolio for a professional photographer.
 The website is designed to showcase photographic work with maximum impact

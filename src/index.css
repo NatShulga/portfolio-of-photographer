@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+.smooth-zoom {
+  transition-property: transform !important;
+  transition-duration: 3000ms !important;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: transform;
+}
+
+.group:hover .smooth-zoom {
+  transform: scale(1.12);
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE и Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
