@@ -5,18 +5,55 @@ const cors = require('cors');
 const app = express();
 const PORT = 5000;
 
-//миддлвары
+// Миддлвары
 app.use(cors());
-app.use(express.json()); // Чтобы сервер понимал формат JSON
+app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/portfolio')
+// Подключение к базе
+mongoose
+  .connect('mongodb://127.0.0.1:27017/portfolio')
   .then(() => console.log('Ура! Мы подключились к MongoDB в Docker!'))
-  .catch(err => console.error('Ошибка подключения к базе:', err));
+  .catch((err) => console.error('Ошибка подключения к базе:', err));
 
-app.get('/', (req, res) => {
-  res.send('Сервер запущен и работает!');
+
+const photoSchema = new mongoose.Schema({
+  title: String,
+  category: String,
+  imageUrl: String,
+  date: { 
+    type: Date, 
+    default: Date.now 
+  },
+});
+
+// Модель (Инструмент для работы с базой)
+const Photo = mongoose.model('Photo', photoSchema);
+
+// Маршрут для получения всех фото
+app.get('/api/photos', async (req, res) => {
+  try {
+    const photos = await Photo.find();
+    res.json(photos);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Маршрут для добавления фото
+app.post('/api/photos', async (req, res) => {
+  try {
+    const newPhoto = new Photo({
+      title: req.body.title,
+      category: req.body.category,
+      imageUrl: req.body.imageUrl
+    });
+    const savedPhoto = await newPhoto.save();
+    res.status(201).json(savedPhoto);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
 });
 
 app.listen(PORT, () => {
-  console.log(`Сервер стартовал на http://localhost:${PORT}`);
+  console.log(`🚀 Сервер стартовал на http://localhost:${PORT}`);
 });
