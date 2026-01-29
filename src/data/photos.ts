@@ -4,7 +4,7 @@ export type Category =
   | 'individual' 
   | 'family' 
   | 'event' 
-  | "children's birthday party" 
+  | "children-birthday" 
   | "street-style";
 
 // 2. Описываем структуру одной фотографии
@@ -19,73 +19,73 @@ export interface Photo {
 export const portfolioData: Photo[] = [
   {
     id: 1,
-    src: '/assets/portfolio/wedding/ls1.jpg',
+    src: '/assets/portfolio/wedding & love-story/ls1.jpg',
     category: 'wedding & love-story',
     alt: 'wedding & love-story'
   },
   {
     id: 11,
-    src: '/assets/portfolio/wedding/ls2.jpg',
+    src: '/assets/portfolio/wedding & love-story/ls2.jpg',
     category: 'wedding & love-story',
     alt: 'wedding & love-story'
   },
   {
     id: 111,
-    src: '/assets/portfolio/wedding/wed.jpg',
+    src: '/assets/portfolio/wedding & love-story/wed.jpg',
     category: 'wedding & love-story',
     alt: 'wedding & love-story'
   },
   {
     id: 1111,
-    src: '/assets/portfolio/wedding/wed1.jpg',
+    src: '/assets/portfolio/wedding & love-story/wed1.jpg',
     category: 'wedding & love-story',
     alt: 'wedding & love-story'
   },
   {
     id: 11111,
-    src: '/assets/portfolio/wedding/wed2.jpg',
+    src: '/assets/portfolio/wedding & love-story/wed2.jpg',
     category: 'wedding & love-story',
     alt: 'wedding & love-story'
   },
   {
     id: 111111,
-    src: '/assets/portfolio/wedding/wed3.jpg',
+    src: '/assets/portfolio/wedding & love-story/wed3.jpg',
     category: 'wedding & love-story',
     alt: 'wedding & love-story'
   },
   {
     id: 2,
-    src: '/assets/portfolio/individ/girls.jpg',
+    src: '/assets/portfolio/individual/girls.jpg',
     category: 'individual',
     alt: 'individual'
   },
   {
     id: 22,
-    src: '/assets/portfolio/individ/kid.jpg',
+    src: '/assets/portfolio/individual/kid.jpg',
     category: 'individual',
     alt: 'individual'
   },
   {
     id: 222,
-    src: '/assets/portfolio/individ/medium-shot-woman-with-delicious-food.jpg',
+    src: '/assets/portfolio/individual/medium-shot-woman-with-delicious-food.jpg',
     category: 'individual',
     alt: 'individual'
   },
   {
     id: 2222,
-    src: '/assets/portfolio/individ/port mmen.jpg',
+    src: '/assets/portfolio/individual/port mmen.jpg',
     category: 'individual',
     alt: 'individual'
   },
   {
     id: 22222,
-    src: '/assets/portfolio/individ/portrait-smiley-woman-posing-outdoors.jpg',
+    src: '/assets/portfolio/individual/portrait-smiley-woman-posing-outdoors.jpg',
     category: 'individual',
     alt: 'individual'
   },
   {
     id: 222222,
-    src: '/assets/portfolio/individ/1.jpg',
+    src: '/assets/portfolio/individual/1.jpg',
     category: 'individual',
     alt: 'individual'
   },
@@ -164,78 +164,78 @@ export const portfolioData: Photo[] = [
   {
     id: 5,
     src: '/assets/portfolio/children-birthday/1.jpg',
-    category: "children's birthday party",
-    alt: "children's birthday party",
+    category: "children-birthday",
+    alt: "children-birthday",
   },
   {
     id: 55,
     src: '/assets/portfolio/children-birthday/2.jpg',
-    category: "children's birthday party",
-    alt: "children's birthday party",
+    category: "children-birthday",
+    alt: "children-birthday",
   },
   {
     id: 555,
     src: '/assets/portfolio/children-birthday/3.jpg',
-    category: "children's birthday party",
-    alt: "children's birthday party",
+    category: "children-birthday",
+    alt: "children-birthday",
   },
   {
     id: 5555,
     src: '/assets/portfolio/children-birthday/4.jpg',
-    category: "children's birthday party",
-    alt: "children's birthday party",
+    category: "children-birthday",
+    alt: "children-birthday",
   },
   {
     id: 55555,
     src: '/assets/portfolio/children-birthday/5.jpg',
-    category: "children's birthday party",
-    alt: "children's birthday party",
+    category: "children-birthday",
+    alt: "children-birthday",
   },
   {
     id: 555555,
     src: '/assets/portfolio/children-birthday/6.jpg',
-    category: "children's birthday party",
-    alt: "children's birthday party",
+    category: "children-birthday",
+    alt: "children-birthday",
   },
   {
     id: 6,
-    src: '/assets/portfolio/street/1.jpg',
+    src: '/assets/portfolio/street-style/1.jpg',
     category: "street-style",
     alt: "street-style",
   },
   {
     id: 66,
-    src: '/assets/portfolio/street/2.jpg',
+    src: '/assets/portfolio/street-style/2.jpg',
     category: "street-style",
     alt: "street-style",
   },
   {
     id: 666,
-    src: '/assets/portfolio/street/3.jpg',
+    src: '/assets/portfolio/street-style/3.jpg',
     category: "street-style",
     alt: "street-style",
   },
   {
     id: 6666,
-    src: '/assets/portfolio/street/4.jpg',
+    src: '/assets/portfolio/street-style/4.jpg',
     category: "street-style",
     alt: "street-style",
   },
   {
     id: 66666,
-    src: '/assets/portfolio/street/5.jpg',
+    src: '/assets/portfolio/street-style/5.jpg',
     category: "street-style",
     alt: "street-style",
   },
     {
     id: 666666,
-    src: '/assets/portfolio/street/6.jpg',
+    src: '/assets/portfolio/street-style/6.jpg',
     category: "street-style",
     alt: "street-style",
   },
   {
     id: 6666666,
-    src: '/assets/portfolio/street/7.jpg',
+    src: '/assets/portfolio/street-style/7.jpg',
     category: "street-style",
     alt: "street-style",
   },

@@ -54,6 +54,17 @@ app.post('/api/photos', async (req, res) => {
   }
 });
 
+app.delete('/api/photos/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    await Photo.findByIdAndDelete(id);//findByIdAndDelete встроеная команда библиоеки MongoDB
+    res.status(200).json({message:'фото успешно удалено'});
+  } catch (err) {
+    res.status(500).json({ message: 'ошибка сервера при удалении'});
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log(`🚀 Сервер стартовал на http://localhost:${PORT}`);
 });
