@@ -22,18 +22,29 @@ const pool = new Pool({
     ssl: { rejectUnauthorized: false }
 });
 
-app.use(cors());
-app.use(express.json());
-app.use(express.static(path.join(__dirname, '..', 'frontend')));
+// 1. Путь к корню проекта (где лежит index.html)
+const rootPath = path.join(__dirname, '..');
+
+// 2. Путь к папке frontend (где лежит admin.html и, возможно, скрипты)
+const frontendFolderPath = path.join(__dirname, '..', 'frontend');
+
+// Разрешаем серверу отдавать файлы из обеих папок
+app.use(express.static(rootPath));
+app.use(express.static(frontendFolderPath));
+
+
+app.use(express.static(rootPath));
+app.use(express.static(frontendPath));
 
 const upload = multer({ storage: multer.memoryStorage() });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
+    res.sendFile(path.join(rootPath, 'index.html'));
 });
 
+// Админка (берем из папки FRONTEND)
 app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'frontend', 'admin.html'));
+    res.sendFile(path.join(frontendFolderPath, 'admin.html'));
 });
 
 
