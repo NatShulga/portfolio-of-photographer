@@ -22,19 +22,20 @@ const pool = new Pool({
     ssl: { rejectUnauthorized: false }
 });
 
+app.use(cors());
+app.use(express.json());
+
 // 1. Путь к корню проекта (где лежит index.html)
 const rootPath = path.join(__dirname, '..');
 
 // 2. Путь к папке frontend (где лежит admin.html и, возможно, скрипты)
 const frontendFolderPath = path.join(__dirname, '..', 'frontend');
 
+
 // Разрешаем серверу отдавать файлы из обеих папок
 app.use(express.static(rootPath));
 app.use(express.static(frontendFolderPath));
 
-
-app.use(express.static(rootPath));
-app.use(express.static(frontendPath));
 
 const upload = multer({ storage: multer.memoryStorage() });
 
