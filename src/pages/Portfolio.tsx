@@ -8,7 +8,7 @@ interface DBPhoto {
   id: string;
   title: string;
   category: string;
-  imageUrl: string;
+  image_url: string;
   date?: string;
 }
 
@@ -179,11 +179,11 @@ export const Portfolio = () => {
                       <div
                         key={photo.id}
                         className="group relative w-[260px] flex-shrink-0 cursor-zoom-in"
-                        onClick={() => setSelectedPhoto(photo.imageUrl)}
+                        onClick={() => setSelectedPhoto(photo.image_url)}
                       >
                         <div className="relative isolate aspect-[4/5] overflow-hidden rounded-sm bg-stone-50">
                           <img
-                            src={photo.imageUrl}
+                            src={photo.image_url}
                             alt={photo.title}
                             className="smooth-zoom h-full w-full object-cover"
                           />
