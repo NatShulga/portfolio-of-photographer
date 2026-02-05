@@ -54,8 +54,10 @@ while maintaining high performance and intuitive navigation.
 * **MongoDB** (База данных в Docker)
 * **Mongoose** (Взаимодействие с БД)
 
-Запуск внутри папки cd backend. 
+Запуск внутри папки cd backend.
 
-node server.js 
+node server.js
 
 Доступен по адресу: `http://localhost:5000`
+
+Проект переведен в инфраструктуру: «React + Node.js + PostgreSQL + Яндекс Облако».

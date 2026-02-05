@@ -4,8 +4,8 @@ export type Category =
   | 'individual' 
   | 'family' 
   | 'event' 
-  | "children-birthday" 
-  | "street-style";
+  | "children birthday" 
+  | "street style";
 
 // 2. Описываем структуру одной фотографии
 export interface Photo {
@@ -164,79 +164,79 @@ export const portfolioData: Photo[] = [
   {
     id: 5,
     src: '/assets/portfolio/children-birthday/1.jpg',
-    category: "children-birthday",
-    alt: "children-birthday",
+    category: "children birthday",
+    alt: "children birthday",
   },
   {
     id: 55,
     src: '/assets/portfolio/children-birthday/2.jpg',
-    category: "children-birthday",
-    alt: "children-birthday",
+    category: "children birthday",
+    alt: "children birthday",
   },
   {
     id: 555,
     src: '/assets/portfolio/children-birthday/3.jpg',
-    category: "children-birthday",
-    alt: "children-birthday",
+    category: "children birthday",
+    alt: "children birthday",
   },
   {
     id: 5555,
     src: '/assets/portfolio/children-birthday/4.jpg',
-    category: "children-birthday",
-    alt: "children-birthday",
+    category: "children birthday",
+    alt: "children birthday",
   },
   {
     id: 55555,
     src: '/assets/portfolio/children-birthday/5.jpg',
-    category: "children-birthday",
-    alt: "children-birthday",
+    category: "children birthday",
+    alt: "children birthday",
   },
   {
     id: 555555,
     src: '/assets/portfolio/children-birthday/6.jpg',
-    category: "children-birthday",
-    alt: "children-birthday",
+    category: "children birthday",
+    alt: "children birthday",
   },
   {
     id: 6,
     src: '/assets/portfolio/street-style/1.jpg',
-    category: "street-style",
-    alt: "street-style",
+    category: "street style",
+    alt: "street style",
   },
   {
     id: 66,
     src: '/assets/portfolio/street-style/2.jpg',
-    category: "street-style",
-    alt: "street-style",
+    category: "street style",
+    alt: "street style",
   },
   {
     id: 666,
     src: '/assets/portfolio/street-style/3.jpg',
-    category: "street-style",
-    alt: "street-style",
+    category: "street style",
+    alt: "street style",
   },
   {
     id: 6666,
     src: '/assets/portfolio/street-style/4.jpg',
-    category: "street-style",
-    alt: "street-style",
+    category: "street style",
+    alt: "street style",
   },
   {
     id: 66666,
     src: '/assets/portfolio/street-style/5.jpg',
-    category: "street-style",
-    alt: "street-style",
+    category: "street style",
+    alt: "street style",
   },
     {
     id: 666666,
     src: '/assets/portfolio/street-style/6.jpg',
-    category: "street-style",
-    alt: "street-style",
+    category: "street style",
+    alt: "street style",
   },
   {
     id: 6666666,
     src: '/assets/portfolio/street-style/7.jpg',
-    category: "street-style",
-    alt: "street-style",
+    category: "street style",
+    alt: "street style",
   },
 ];

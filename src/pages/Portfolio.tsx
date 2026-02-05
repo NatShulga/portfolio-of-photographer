@@ -79,8 +79,8 @@ export const Portfolio = () => {
     'individual',
     'family',
     'event',
-    "children-birthday",
-    'street-style',
+    "children birthday",
+    'street style',
   ];
 
   const handleDelete = async (id: string) => {
