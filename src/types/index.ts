@@ -13,7 +13,7 @@ export interface Album {
   title: string;
   description: string;
   coverUrl: string;       // Обложка альбома
-  category: 'family' | 'individual' | 'wedding & love-story' | "children's birthday party" | 'event' ; // Строгие категории
+  category: 'family' | 'individual' | 'wedding & love story' | "children's birthday party" | 'event' ; // Строгие категории
   photos: Photo[]; // Массив фоточек
 }
 

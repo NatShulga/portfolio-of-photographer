@@ -5,7 +5,7 @@ export const FeaturedWorks = () => {
   const featuredItems = [
     {
       id: '01',
-      category: 'wedding & love-story',
+      category: 'wedding & love story',
       title: 'WEDDING & LOVE',
       src: '/wedding.jpg',
       gridClass: 'md:col-span-1 md:row-span-2', // Высокое фото

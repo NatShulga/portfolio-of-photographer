@@ -1,6 +1,6 @@
 // 1. Определяем категорий
 export type Category = 
-  | 'wedding & love-story' 
+  | 'wedding & love story' 
   | 'individual' 
   | 'family' 
   | 'event' 
@@ -19,39 +19,39 @@ export interface Photo {
 export const portfolioData: Photo[] = [
   {
     id: 1,
-    src: '/assets/portfolio/wedding & love-story/ls1.jpg',
-    category: 'wedding & love-story',
-    alt: 'wedding & love-story'
+    src: '/assets/portfolio/wedding & love story/ls1.jpg',
+    category: 'wedding & love story',
+    alt: 'wedding & love story'
   },
   {
     id: 11,
-    src: '/assets/portfolio/wedding & love-story/ls2.jpg',
-    category: 'wedding & love-story',
-    alt: 'wedding & love-story'
+    src: '/assets/portfolio/wedding & love story/ls2.jpg',
+    category: 'wedding & love story',
+    alt: 'wedding & love story'
   },
   {
     id: 111,
-    src: '/assets/portfolio/wedding & love-story/wed.jpg',
-    category: 'wedding & love-story',
-    alt: 'wedding & love-story'
+    src: '/assets/portfolio/wedding & love story/wed.jpg',
+    category: 'wedding & love story',
+    alt: 'wedding & love story'
   },
   {
     id: 1111,
-    src: '/assets/portfolio/wedding & love-story/wed1.jpg',
-    category: 'wedding & love-story',
-    alt: 'wedding & love-story'
+    src: '/assets/portfolio/wedding & love story/wed1.jpg',
+    category: 'wedding & love story',
+    alt: 'wedding & love story'
   },
   {
     id: 11111,
-    src: '/assets/portfolio/wedding & love-story/wed2.jpg',
-    category: 'wedding & love-story',
-    alt: 'wedding & love-story'
+    src: '/assets/portfolio/wedding & love story/wed2.jpg',
+    category: 'wedding & love story',
+    alt: 'wedding & love story'
   },
   {
     id: 111111,
-    src: '/assets/portfolio/wedding & love-story/wed3.jpg',
-    category: 'wedding & love-story',
-    alt: 'wedding & love-story'
+    src: '/assets/portfolio/wedding & love story/wed3.jpg',
+    category: 'wedding & love story',
+    alt: 'wedding & love story'
   },
   {
     id: 2,

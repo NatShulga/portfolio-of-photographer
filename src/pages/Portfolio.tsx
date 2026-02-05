@@ -75,7 +75,7 @@ export const Portfolio = () => {
   };
 
   const categories: Category[] = [
-    'wedding & love-story',
+    'wedding & love story',
     'individual',
     'family',
     'event',
