@@ -1,14 +1,20 @@
-const express = require('express');
-const { Pool } = require('pg');
-const cors = require('cors');
-const path = require('path');
-const multer = require('multer');
-const AWS = require('aws-sdk');
+import express from 'express';
+import pg from 'pg';
+const { Pool } = pg;
+import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import multer from 'multer';
+import AWS from 'aws-sdk';
+
+// Эмуляция __dirname для ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// 1. Настройка связи с Яндекс.Облаком
+// Настройка связи с Яндекс.Облаком
 const s3 = new AWS.S3({
     endpoint: 'https://storage.yandexcloud.net',
     accessKeyId: process.env.YANDEX_ACCESS_KEY_ID, 
@@ -17,36 +23,29 @@ const s3 = new AWS.S3({
     s3ForcePathStyle: true
 });
 
-// 2. Настройка базы данных PostgreSQL
+// Настройка базы данных
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false }
 });
 
-// 3. Middleware
 app.use(cors());
 app.use(express.json());
 
-// 4. ОПРЕДЕЛЕНИЕ ПУТЕЙ (Исправлено под React-сборку)
-// Путь к папке dist, которую создаст Vite внутри fronten
+// Пути (dist в корне)
 const distPath = path.join(__dirname, '..', 'dist');
-// Путь к самой папке frontend (для доступа к admin.html)
 const frontendFolderPath = path.join(__dirname, '..', 'frontend');
 
-// Раздаем статические файлы
 app.use(express.static(distPath));
 app.use(express.static(frontendFolderPath));
 
 const upload = multer({ storage: multer.memoryStorage() });
 
-// --- МАРШРУТЫ API ---
-
-// Загрузка фото в облако и запись в БД
+// --- API МАРШРУТЫ ---
 app.post('/api/photos', upload.single('photo'), async (req, res) => {
     try {
         const { title, category } = req.body;
         const file = req.file;
-
         if (!file) return res.status(400).json({ error: 'Файл не выбран' });
 
         const fileName = `portfolio/${Date.now()}-${file.originalname}`;
@@ -72,7 +71,6 @@ app.post('/api/photos', upload.single('photo'), async (req, res) => {
     }
 });
 
-// Получение списка всех фото
 app.get('/api/photos', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM photos ORDER BY id DESC');
@@ -82,14 +80,11 @@ app.get('/api/photos', async (req, res) => {
     }
 });
 
-// --- МАРШРУТЫ ДЛЯ СТРАНИЦ ---
-
-// Админка (конкретный путь)
+// --- СТРАНИЦЫ ---
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(frontendFolderPath, 'admin.html'));
 });
 
-// Главная страница React (Любой другой путь отправляет в index.html из dist)
 app.get('*', (req, res) => {
     if (!req.url.startsWith('/api')) {
         res.sendFile(path.join(distPath, 'index.html'));
