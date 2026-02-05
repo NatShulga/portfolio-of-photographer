@@ -85,7 +85,7 @@ app.get('/admin', (req, res) => {
     res.sendFile(path.join(frontendFolderPath, 'admin.html'));
 });
 
-app.get('*', (req, res) => {
+app.get('/*splat', (req, res) => {
     if (!req.url.startsWith('/api')) {
         res.sendFile(path.join(distPath, 'index.html'));
     }
