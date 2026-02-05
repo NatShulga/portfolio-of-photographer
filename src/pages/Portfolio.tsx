@@ -5,7 +5,7 @@ import axios from 'axios';
 
 // Объект фото из бд
 interface DBPhoto {
-  _id: string;
+  id: string;
   title: string;
   category: string;
   imageUrl: string;
@@ -26,7 +26,7 @@ export const Portfolio = () => {
     const fetchPhotos = async () => {
       setIsLoading(true); // Включаем спиннер
       try {
-        const res = await axios.get('http://127.0.0.1:5000/api/photos');
+        const res = await axios.get('/api/photos');
         setDbPhotos(res.data);
       } catch (err) {
         console.error('Ошибка загрузки из БД:', err);
@@ -86,8 +86,8 @@ export const Portfolio = () => {
   const handleDelete = async (id: string) => {
     if (!window.confirm('Удалить это фото?')) return;
     try {
-      await axios.delete(`http://127.0.0.1:5000/api/photos/${id}`);
-      setDbPhotos(prev => prev.filter(photo => photo._id !== id));
+      await axios.delete(`/api/photos/${id}`);
+      setDbPhotos(prev => prev.filter(photo => photo.id !== id));
     } catch (err) {
       console.error('Ошибка удаления:', err);
     }
@@ -177,7 +177,7 @@ export const Portfolio = () => {
                   >
                     {categoryPhotos.map((photo) => (
                       <div
-                        key={photo._id}
+                        key={photo.id}
                         className="group relative w-[260px] flex-shrink-0 cursor-zoom-in"
                         onClick={() => setSelectedPhoto(photo.imageUrl)}
                       >
@@ -194,7 +194,7 @@ export const Portfolio = () => {
                           <button 
                             onClick={(e) => {
                               e.stopPropagation();
-                              handleDelete(photo._id);
+                              handleDelete(photo.id);
                             }}
                             className="cursor-pointer text-red-300 hover:text-red-500 transition-colors"
                           >

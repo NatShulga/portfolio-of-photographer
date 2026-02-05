@@ -80,6 +80,42 @@ app.get('/api/photos', async (req, res) => {
     }
 });
 
+app.delete('/api/photos/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // 1. Сначала ищем фото, чтобы получить URL для удаления из S3
+        const photoResult = await pool.query('SELECT image_url FROM photos WHERE id = $1', [id]);
+        
+        if (photoResult.rows.length === 0) {
+            return res.status(404).json({ error: 'Фото не найдено' });
+        }
+
+        const imageUrl = photoResult.rows[0].image_url;
+        const bucketName = process.env.YANDEX_BUCKET_NAME;
+        
+        // Извлекаем ключ файла (Key) из URL
+        const fileKey = imageUrl.split(`${bucketName}/`)[1];
+
+        // 2. Удаляем из Яндекс.Облака
+        if (fileKey) {
+            await s3.deleteObject({
+                Bucket: bucketName,
+                Key: fileKey
+            }).promise();
+        }
+
+        // 3. Удаляем из базы данных
+        await pool.query('DELETE FROM photos WHERE id = $1', [id]);
+
+        res.json({ message: 'Фото успешно удалено' });
+    } catch (err) {
+        console.error('Ошибка при удалении:', err);
+        res.status(500).json({ error: 'Ошибка сервера при удалении' });
+    }
+});
+
+
 // --- СТРАНИЦЫ ---
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(frontendFolderPath, 'admin.html'));
