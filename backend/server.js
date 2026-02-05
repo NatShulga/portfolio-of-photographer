@@ -29,7 +29,7 @@ app.use(express.json());
 
 // 4. ОПРЕДЕЛЕНИЕ ПУТЕЙ (Исправлено под React-сборку)
 // Путь к папке dist, которую создаст Vite внутри fronten
-const distPath = path.join(__dirname, '..', 'frontend', 'dist');
+const distPath = path.join(__dirname, '..', 'dist');
 // Путь к самой папке frontend (для доступа к admin.html)
 const frontendFolderPath = path.join(__dirname, '..', 'frontend');
 
