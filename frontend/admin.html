@@ -69,7 +69,7 @@
 
         try {
             // URL бэкенда на Render
-            const response = await fetch('https://portfolio-of-photographer.onrender.com/api/photos', {
+            const response = await fetch('/api/photos', {
                 method: 'POST',
                 body: formData // Для файлов используем FormData, а не JSON
             });
