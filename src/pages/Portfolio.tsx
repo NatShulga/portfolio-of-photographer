@@ -180,7 +180,7 @@ export const Portfolio = () => {
                               }}
                               className="cursor-pointer text-red-300 hover:text-red-500 transition-colors"
                             >
-                              [ Удалить ]
+                              
                             </button>
                           )}
                         </div>   
