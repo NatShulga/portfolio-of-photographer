@@ -7,12 +7,15 @@ import { fileURLToPath } from 'url';
 import multer from 'multer';
 import AWS from 'aws-sdk';
 
-// Эмуляция __dirname для ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+//НАСТРОЙКИ БЕЗОПАСНОСТИ
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "12345"; // Пароль для входа
+const AUTH_TOKEN = "super-secret-admin-key-2026"; // Токен-паспорт
 
 // Настройка связи с Яндекс.Облаком
 const s3 = new AWS.S3({
@@ -23,7 +26,6 @@ const s3 = new AWS.S3({
     s3ForcePathStyle: true
 });
 
-// Настройка базы данных
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false }
@@ -32,17 +34,35 @@ const pool = new Pool({
 app.use(cors());
 app.use(express.json());
 
-// Пути (dist в корне)
-const distPath = path.join(__dirname, '..', 'dist');
-const frontendFolderPath = path.join(__dirname, '..', 'frontend');
+//MIDDLEWARE ДЛЯ ПРОВЕРКИ АВТОРИЗАЦИИ 
+const checkAuth = (req, res, next) => {
+    const token = req.headers['authorization'];
+    if (token === AUTH_TOKEN) {
+        next(); // Паспорт верный, пропускаем
+    } else {
+        res.status(403).json({ error: 'Доступ запрещен' });
+    }
+};
 
+const distPath = path.join(__dirname, '..', 'dist');
 app.use(express.static(distPath));
-app.use(express.static(frontendFolderPath));
 
 const upload = multer({ storage: multer.memoryStorage() });
 
 // --- API МАРШРУТЫ ---
-app.post('/api/photos', upload.single('photo'), async (req, res) => {
+
+// Маршрут для ЛОГИНА
+app.post('/api/login', (req, res) => {
+    const { password } = req.body;
+    if (password === ADMIN_PASSWORD) {
+        res.json({ success: true, token: AUTH_TOKEN });
+    } else {
+        res.status(401).json({ success: false, message: 'Неверный пароль' });
+    }
+});
+
+// ЗАГРУЗКА (Добавлен checkAuth)
+app.post('/api/photos', checkAuth, upload.single('photo'), async (req, res) => {
     try {
         const { title, category } = req.body;
         const file = req.file;
@@ -76,15 +96,15 @@ app.get('/api/photos', async (req, res) => {
         const result = await pool.query('SELECT * FROM photos ORDER BY id DESC');
         res.json(result.rows);
     } catch (err) {
+        console.error("ОШИБКА БАЗЫ ДАННЫХ:", err);
         res.status(500).json({ error: err.message });
     }
 });
 
-app.delete('/api/photos/:id', async (req, res) => {
+//УДАЛЕНИЕ (Добавлен checkAuth)
+app.delete('/api/photos/:id',checkAuth, async (req, res) => {
     try {
         const { id } = req.params;
-
-        // 1. Сначала ищем фото, чтобы получить URL для удаления из S3
         const photoResult = await pool.query('SELECT image_url FROM photos WHERE id = $1', [id]);
         
         if (photoResult.rows.length === 0) {
@@ -93,11 +113,8 @@ app.delete('/api/photos/:id', async (req, res) => {
 
         const imageUrl = photoResult.rows[0].image_url;
         const bucketName = process.env.YANDEX_BUCKET_NAME;
-        
-        // Извлекаем ключ файла (Key) из URL
         const fileKey = imageUrl.split(`${bucketName}/`)[1];
 
-        // 2. Удаляем из Яндекс.Облака
         if (fileKey) {
             await s3.deleteObject({
                 Bucket: bucketName,
@@ -105,9 +122,7 @@ app.delete('/api/photos/:id', async (req, res) => {
             }).promise();
         }
 
-        // 3. Удаляем из базы данных
         await pool.query('DELETE FROM photos WHERE id = $1', [id]);
-
         res.json({ message: 'Фото успешно удалено' });
     } catch (err) {
         console.error('Ошибка при удалении:', err);
@@ -115,16 +130,11 @@ app.delete('/api/photos/:id', async (req, res) => {
     }
 });
 
+// странички
+// удалены app.get('/admin'), так как React Router сам обработает /admin
 
-// --- СТРАНИЦЫ ---
-app.get('/admin', (req, res) => {
-    res.sendFile(path.join(frontendFolderPath, 'admin.html'));
-});
-
-app.get('/*splat', (req, res) => {
-    if (!req.url.startsWith('/api')) {
-        res.sendFile(path.join(distPath, 'index.html'));
-    }
+app.get(/^(?!\/api).+/, (req, res) => {
+    res.sendFile(path.join(distPath, 'index.html'));
 });
 
 app.listen(PORT, () => console.log(`Сервер запущен на порту ${PORT}`));
