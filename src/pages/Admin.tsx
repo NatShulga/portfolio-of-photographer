@@ -57,6 +57,9 @@ export const Admin: React.FC = () => {
             <option value="wedding & love story">Свадьба & Love Story</option>
             <option value="individual">Индивидуальная</option>
             <option value="family">Семейная</option>
+            <option value="event">Событие</option>
+            <option value="children birthday">Детский день рождения</option>
+            <option value="street style">Уличный стиль</option>
           </select>
         </div>
 

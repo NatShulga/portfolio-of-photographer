@@ -16,9 +16,12 @@ export const Portfolio = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  // Проверка прав админа для отображения кнопки удаления
-  const isAdmin = !!localStorage.getItem('token');
+  useEffect(() => {
+    const token = !!localStorage.getItem('token');
+    setIsAdmin(!!token);
+  }, []);
 
   const scrollRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
