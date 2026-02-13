@@ -67,7 +67,9 @@ const checkAuth = (req, res, next) => {
     }
 };
 
-const distPath = path.join(__dirname, '..', 'dist');
+const distPath = path.resolve(__dirname, '..', 'dist');
+
+console.log('Server looking for static files in:', distPath);//для отладки
 app.use(express.static(distPath));
 
 const upload = multer({ storage: multer.memoryStorage() });
