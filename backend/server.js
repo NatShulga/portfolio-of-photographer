@@ -6,12 +6,35 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import multer from 'multer';
 import AWS from 'aws-sdk';
+import helmet from 'helmet';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+//HELMET
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        "default-src": ["'self'"],
+        // Разрешаем картинки из Яндекс.Облака и data:links
+        "img-src": ["'self'", "data:", "https://storage.yandexcloud.net"],
+        // Разрешаем скрипты (важно для работы React)
+        "script-src": ["'self'", "'unsafe-inline'"],
+        // Разрешаем коннект к API (локально и на Render)
+        "connect-src": ["'self'", "http://localhost:3000", "https://*.onrender.com"],
+        "style-src": ["'self'", "'unsafe-inline'"],
+        "font-src": ["'self'", "https:", "data:"],
+      },
+    },
+    // Отключаем заголовок, который может мешать загрузке в некоторых браузерах при работе с S3
+    crossOriginResourcePolicy: { policy: "cross-origin" }
+  })
+);
+
 
 //НАСТРОЙКИ БЕЗОПАСНОСТИ
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "12345"; // Пароль для входа
