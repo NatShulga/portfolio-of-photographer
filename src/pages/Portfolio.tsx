@@ -113,6 +113,12 @@ export const Portfolio = () => {
     }
   };
 
+  const handleLogout = () => {
+      localStorage.removeItem('token'); // Удаляем ключ из браузера
+      setIsAdmin(false);               // Сбрасываем состояние
+      window.location.reload();        // Перезагружаем страницу, чтобы всё очистилось
+    };
+
   return (
     <main className="relative min-h-screen bg-[#FDFCF8] pt-32 pb-20">
       {/* Кнопка скролла */}
@@ -131,6 +137,19 @@ export const Portfolio = () => {
         <h1 className="mb-8 text-center font-serif text-3xl tracking-[0.3em] text-stone-800 uppercase">
           Portfolio
         </h1>
+
+        {/* КНОПКА ВЫХОДА */}
+          {isAdmin && (
+            <div className="mb-12 flex justify-center">
+              <button
+                onClick={handleLogout}
+                className="group relative flex items-center gap-2 overflow-hidden border border-stone-200 bg-white px-6 py-2 text-[10px] tracking-[0.2em] text-stone-500 uppercase transition-all hover:border-red-200 hover:text-red-500"
+              >
+                <span className="relative z-10">Выйти из режима редактирования</span>
+                <div className="absolute inset-0 z-0 translate-y-full bg-red-50 transition-transform duration-300 group-hover:translate-y-0" />
+              </button>
+            </div>
+          )}
 
         <nav className="mb-24 flex flex-wrap justify-center gap-x-8 gap-y-4">
           {categories.map((cat) => (
