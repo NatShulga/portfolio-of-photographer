@@ -6,27 +6,35 @@ Fullstack-приложение (фронтенд + бэкенд + база да�
 Сайт спроектирован так, чтобы максимально эффектно демонстрировать фотоработы,
 сохраняя при этом высокую скорость загрузки и удобство навигации.
 
-Portfolio of Photographer
-
-A modern, minimalist portfolio for a professional photographer.
-The website is designed to showcase photographic work with maximum impact
-while maintaining high performance and intuitive navigation.
-
 ## Технологический стек
 
-- **Framework:** [React 18](https://reactjs.org/) (с использованием TypeScript)
-- **Build Tool:** [Vite](https://vitejs.dev/) — для мгновенной сборки.
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/) — для кастомного дизайна.
-- **Animations:** [Framer Motion](https://www.framer.com/motion/) — для плавных переходов.
-- **Icons:** [Lucide React](https://lucide.dev/)
-- **Linting:** ESLint + Prettier — для чистоты кода.Tech Stack
+### Frontend
+
+- **Framework:** [React 18]() (TypeScript)
+- **Build Tool:** [Vite]()
+- **Styling:** [Tailwind CSS]()
+- **Animations:** [Framer Motion]()
+- **Icons:** [Lucide React]()
+
+### Backend
+
+- **Engine:** **Node.js & Express**
+- **Database:** **PostgreSQL** (развернута на Render)
+- **Storage:** **Yandex Cloud Object Storage (S3)** — для хранения медиафайлов.
+- **Security:** **Helmet** — защита HTTP-заголовков и настройка CSP.
+- **File Handling:** **Multer** — загрузка изображений «на лету».
+- **AWS SDK (S3):** Прямая интеграция с объектным хранилищем Yandex Cloud.
 
 **Особенности проекта**
+
 
 - [ ] **Lightbox:** Просмотр фотографий во весь экран.
 - [ ] **Адаптивность:** Сайт идеально выглядит на смартфонах и десктопах.
 - [ ] **Разделение по категориям:** Свадьбы, Love Story, Индивидуальная, Стрит- Стаил.
-- [ ] **Форма обратной связи:** Интеграция для записи на съемку.
+- [ ] Ад**мин-панель** для управления портфолио.
+- [ ] **Облачное хранилище:** Интеграция с **Yandex Cloud (S3)** для надежного хранения и быстрой отдачи фотографий.
+- [ ] **Безопасность:** Использование **Helmet** для защиты от XSS-атак и настройки строгой политики безопасности ресурсов (CSP).
+- [ ] **Авторизация:** Защищенный вход в панель управления с использованием **авторизационных токенов**
 
 ## Быстрый старт
 
@@ -43,17 +51,9 @@ while maintaining high performance and intuitive navigation.
 
 Серверная часть отвечает за работу с базой данных и хранение информации о фотоработах.
 
-#### Стек:
-
-* **Node.js + Express** (Серверная логика)
-* **MongoDB** (База данных в Docker)
-* **Mongoose** (Взаимодействие с БД)
-
 Запуск внутри папки cd backend.
 
 node server.js
-
-Доступен по адресу: `http://localhost:5000`
 
 **Проект переведен в инфраструктуру: «React + Node.js + PostgreSQL(Render) + Яндекс Облако».**
 
