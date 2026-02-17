@@ -21,18 +21,11 @@ while maintaining high performance and intuitive navigation.
 - **Icons:** [Lucide React](https://lucide.dev/)
 - **Linting:** ESLint + Prettier — для чистоты кода.Tech Stack
 
-* **Framework:** [React 18](https://reactjs.org/) (TypeScript)
-* **Build Tool:** [Vite](https://vitejs.dev/) — for lightning-fast development.
-* **Styling:** [Tailwind CSS](https://tailwindcss.com/) — for custom UI design.
-* **Animations:** [Framer Motion](https://www.framer.com/motion/) — for smooth transitions.
-* **Icons:** [Lucide React](https://lucide.dev/)
-* **Linting:** ESLint + Prettier — for clean and consistent code.
-
 **Особенности проекта**
 
 - [ ] **Lightbox:** Просмотр фотографий во весь экран.
 - [ ] **Адаптивность:** Сайт идеально выглядит на смартфонах и десктопах.
-- [ ] **Разделение по категориям:** Свадьбы, Love Story, Репортажи.
+- [ ] **Разделение по категориям:** Свадьбы, Love Story, Индивидуальная, Стрит- Стаил.
 - [ ] **Форма обратной связи:** Интеграция для записи на съемку.
 
 ## Быстрый старт
@@ -63,3 +56,9 @@ node server.js
 Доступен по адресу: `http://localhost:5000`
 
 **Проект переведен в инфраструктуру: «React + Node.js + PostgreSQL(Render) + Яндекс Облако».**
+
+## Безопасность
+
+Для защиты приложения используется **Helmet**, который настраивает Content Security Policy (CSP). Это позволяет безопасно загружать медиа-контент из внешних источников, таких как **Yandex Cloud Object Storage**, и блокирует попытки внедрения вредоносных скриптов. **Скрывает**, что сервер работает на Express (заголовок `X-Powered-By`)
+
+**Helmet** — настройка защитных HTTP-заголовков (CSP, HSTS и др.) для защиты от XSS, кликджекинга и других атак.
