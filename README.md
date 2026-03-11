@@ -19,14 +19,13 @@ Fullstack-приложение (фронтенд + бэкенд + база да�
 ### Backend
 
 - **Engine:** **Node.js & Express**
-- **Database:** **PostgreSQL** (развернута на Render)
+- **Database:** **PostgreSQL** (Supabase + SQL)
 - **Storage:** **Yandex Cloud Object Storage (S3)** — для хранения медиафайлов.
 - **Security:** **Helmet** — защита HTTP-заголовков и настройка CSP.
 - **File Handling:** **Multer** — загрузка изображений «на лету».
 - **AWS SDK (S3):** Прямая интеграция с объектным хранилищем Yandex Cloud.
 
 **Особенности проекта**
-
 
 - [ ] **Lightbox:** Просмотр фотографий во весь экран.
 - [ ] **Адаптивность:** Сайт идеально выглядит на смартфонах и десктопах.
@@ -55,7 +54,7 @@ Fullstack-приложение (фронтенд + бэкенд + база да�
 
 node server.js
 
-**Проект переведен в инфраструктуру: «React + Node.js + PostgreSQL(Render) + Яндекс Облако».**
+**Проект переведен в инфраструктуру: «React + Node.js + PostgreSQL(Supabase + SQL) + Яндекс Облако».**
 
 ## Безопасность
 
